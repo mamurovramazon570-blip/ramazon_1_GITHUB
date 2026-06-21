@@ -11,3 +11,4 @@ print("siz prava ololmaysiz")
  salom
 privet
 hellow
+men yaxshi
