@@ -8,3 +8,4 @@ print("siz prava ololasiz")
 }else{
 print("siz prava ololmaysiz")
 }
+ salom
