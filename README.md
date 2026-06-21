@@ -9,3 +9,4 @@ print("siz prava ololasiz")
 print("siz prava ololmaysiz")
 }
  salom
+privet
