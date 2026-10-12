@@ -3,109 +3,213 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome</title>
+    <title>Landing — Ramazon</title>
     <style>
-      :root {
-        --bg: #f4f7fb;
+      :root{
+        --bg: #f8fafc;
         --card: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --primary: #4f46e5;
-        --primary-dark: #3730a3;
-        --shadow: rgba(79, 70, 229, 0.18);
+        --accent: #4f46e5;
+        --muted:#6b7280;
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:#0f172a;background:linear-gradient(180deg,#eef2ff 0%, #f8fafc 100%)}
+
+      header{position:sticky;top:0;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));border-bottom:1px solid rgba(15,23,42,0.04);z-index:40}
+      .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1rem}
+      .brand{font-weight:800;color:var(--accent);letter-spacing:0.02em}
+      nav ul{display:flex;gap:0.5rem;padding:0;margin:0;list-style:none;align-items:center}
+      nav a{display:inline-block;padding:0.55rem 0.7rem;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+      nav a:hover, nav a.active{background:rgba(79,70,229,0.08);color:var(--accent)}
+      .cta{background:var(--accent);color:#fff;padding:0.5rem 0.9rem;border-radius:9px;text-decoration:none;font-weight:700}
+
+      main{max-width:1100px;margin:2.2rem auto;padding:0 1rem}
+      section{padding:3.2rem 0;border-radius:12px}
+      .hero{display:grid;grid-template-columns:1fr;gap:1.2rem;align-items:center;text-align:center}
+      .hero h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:0}
+      .hero p{color:var(--muted);margin:0}
+
+      .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+      .card{background:var(--card);padding:1.1rem;border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,0.06)}
+      .card h3{margin:0 0 0.5rem}
+      .card p{margin:0;color:var(--muted);font-size:0.95rem}
+
+      .form{max-width:720px;margin:0 auto;display:grid;gap:0.8rem}
+      input,textarea,select{width:100%;padding:0.8rem;border-radius:8px;border:1px solid #e6e9ef;font-size:0.95rem}
+      .row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
+      button{background:var(--accent);color:white;padding:0.75rem 1rem;border:0;border-radius:10px;font-weight:700}
+
+      .members{display:flex;gap:0.8rem;flex-wrap:wrap}
+      .member{background:linear-gradient(180deg,#fff,#fbfbff);padding:0.7rem 0.9rem;border-radius:12px;display:flex;align-items:center;gap:0.7rem;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+      .avatar{width:44px;height:44px;border-radius:999px;background:var(--accent);color:white;display:grid;place-items:center;font-weight:800}
+
+      .faq{max-width:880px;margin:0 auto}
+      .item{background:var(--card);border-radius:10px;padding:0.9rem;margin-bottom:0.6rem}
+      .q{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+      .a{margin-top:0.6rem;color:var(--muted);display:none}
+
+      .map{height:320px;border-radius:12px;overflow:hidden}
+
+      footer{max-width:1100px;margin:2rem auto;padding:1.2rem;color:var(--muted);text-align:center}
+
+      @media (min-width:720px){
+        .hero{grid-template-columns:1fr 420px;text-align:left}
       }
 
-      * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 45%, #e0f2fe 100%);
-        color: var(--text);
-      }
-
-      .card {
-        width: min(92vw, 520px);
-        background: var(--card);
-        border-radius: 20px;
-        padding: 2.5rem 2rem;
-        text-align: center;
-        box-shadow: 0 24px 60px var(--shadow);
-      }
-
-      .badge {
-        display: inline-block;
-        padding: 0.45rem 0.8rem;
-        border-radius: 999px;
-        background: #eef2ff;
-        color: var(--primary-dark);
-        font-weight: 700;
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 1.2rem 0 0.8rem;
-        font-size: clamp(2.2rem, 5vw, 3.5rem);
-        line-height: 1.1;
-      }
-
-      p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.7;
-      }
-
-      .actions {
-        margin-top: 1.75rem;
-        display: flex;
-        justify-content: center;
-        gap: 0.9rem;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 0.9rem 1.4rem;
-        border-radius: 12px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .btn:hover {
-        transform: translateY(-1px);
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: #fff;
-        box-shadow: 0 12px 22px rgba(79, 70, 229, 0.28);
-      }
-
-      .btn-secondary {
-        background: #f3f4f6;
-        color: var(--text);
+      .menu-toggle{display:none}
+      @media (max-width:720px){
+        nav ul{display:none;position:absolute;top:56px;right:12px;background:rgba(255,255,255,0.98);padding:0.8rem;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,0.08);flex-direction:column}
+        .menu-toggle{display:inline-block}
       }
     </style>
   </head>
   <body>
-    <main class="card">
-      <span class="badge">Welcome</span>
-      <h1>Hello, world!</h1>
-      <p>
-        Your page is now styled with a clean modern look and a polished landing-page feel.
-      </p>
-
-      <div class="actions">
-        <a href="#" class="btn btn-primary">Get started</a>
-        <a href="#" class="btn btn-secondary">Learn more</a>
+    <header>
+      <div class="nav">
+        <div class="brand">Ramazon</div>
+        <div>
+          <button class="menu-toggle" aria-label="menu">☰</button>
+          <nav>
+            <ul id="nav-list">
+              <li><a href="#home" class="active">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#card">Card</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#help">Help</a></li>
+              <li><a href="#members">Members</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <span style="display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(79,70,229,0.08);color:var(--accent);font-weight:800;font-size:0.8rem">Welcome</span>
+          <h1>Salom! Bu sizning yangi sahifangiz</h1>
+          <p>Oddiy, tez va zamonaviy ko'rinishdagi bir sahifa. Pastdagi bo'limlardan biriga o'ting yoki <strong>Get started</strong> tugmasini bosing.</p>
+          <div style="margin-top:1rem;display:flex;gap:0.65rem;flex-wrap:wrap">
+            <a class="cta" href="#about">Get started</a>
+            <a style="padding:0.55rem 0.9rem;border-radius:9px;background:#f3f4f6;color:var(--muted);font-weight:700;text-decoration:none" href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="text-align:center">
+            <h3>Quick preview</h3>
+            <p>Bu yerda tezkor ma'lumotlar yoki CTA joylashadi. Sahifani o'zgartirishni davom ettiring.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <p style="color:var(--muted);max-width:70ch">Bu bo'lim loyihangiz haqida qisqacha ma'lumot beradi. Web sahifani siz istagancha kengaytirish mumkin — kompaniya haqida, xizmatlar yoki portfolio.</p>
+      </section>
+
+      <section id="card">
+        <h2>Card</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Basic</h3>
+            <p>Oddiy karta — mos va soddaligi bilan.</p>
+          </div>
+          <div class="card">
+            <h3>Pro</h3>
+            <p>Ko'proq imkoniyatlar bilan professional paket.</p>
+          </div>
+          <div class="card">
+            <h3>Enterprise</h3>
+            <p>Katta tashkilotlar uchun moslashtirilgan yechim.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="location">
+        <h2>Location</h2>
+        <p style="color:var(--muted)">Manzil yoki ofis joylashuvini ko'rsatish uchun xarita qo'yishingiz mumkin.</p>
+        <div class="map" style="margin-top:0.8rem">
+          <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://www.google.com/maps?q=Tashkent&output=embed" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section id="help">
+        <h2>Help</h2>
+        <div class="faq">
+          <div class="item">
+            <div class="q"><div>Q: Qanday boshlash mumkin?</div><div>+</div></div>
+            <div class="a">A: Sahifaning yuqorisidagi "Get started" tugmasini bosing yoki kontakt orqali murojaat qiling.</div>
+          </div>
+          <div class="item">
+            <div class="q"><div>Q: Narxlar qanday?</div><div>+</div></div>
+            <div class="a">A: Narxlar bo'limni (Card) ko'ring yoki to'g'ridan-to'g'ri biz bilan bog'laning.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="members">
+        <h2>Members</h2>
+        <div class="members">
+          <div class="member"><div class="avatar">RA</div><div><strong>Ravshan</strong><div style="color:var(--muted)">Founder</div></div></div>
+          <div class="member"><div class="avatar">AM</div><div><strong>Amanda</strong><div style="color:var(--muted)">Designer</div></div></div>
+          <div class="member"><div class="avatar">JM</div><div><strong>Jamshed</strong><div style="color:var(--muted)">Developer</div></div></div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <form class="form" onsubmit="event.preventDefault();alert('Form submitted (demo)')">
+          <div class="row">
+            <input placeholder="Ism" required />
+            <input placeholder="Email" type="email" required />
+          </div>
+          <input placeholder="Mavzu" />
+          <textarea rows="5" placeholder="Xabar" required></textarea>
+          <div style="display:flex;justify-content:flex-end">
+            <button type="submit">Yuborish</button>
+          </div>
+        </form>
+      </section>
     </main>
+
+    <footer>© 2026 Ramazon — All rights reserved</footer>
+
+    <script>
+      const links = document.querySelectorAll('nav a');
+      links.forEach(l=>l.addEventListener('click', e=>{e.preventDefault();const target=document.querySelector(l.getAttribute('href'));if(target) target.scrollIntoView({behavior:'smooth'});toggleMenu(false);}));
+
+      function onScroll(){
+        const fromTop = window.scrollY + 80;
+        links.forEach(link =>{
+          const sec = document.querySelector(link.hash);
+          if(!sec) return;
+          if(sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop){
+            links.forEach(x=>x.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+
+      document.querySelectorAll('.faq .item').forEach(it=>{
+        const q = it.querySelector('.q');
+        q.addEventListener('click', ()=>{
+          const a = it.querySelector('.a');
+          a.style.display = a.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navList = document.getElementById('nav-list');
+      function toggleMenu(force){
+        if(window.innerWidth>720){navList.style.display='flex';return}
+        if(force===false){navList.style.display='none';return}
+        navList.style.display = navList.style.display==='flex' ? 'none' : 'flex';
+      }
+      menuToggle && menuToggle.addEventListener('click', toggleMenu);
+      window.addEventListener('resize', ()=>{ if(window.innerWidth>720) navList.style.display='flex'; else navList.style.display='none'})
+    </script>
   </body>
 </html>
